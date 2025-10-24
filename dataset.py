@@ -16,11 +16,11 @@ data_transforms = transforms.Compose([
 ])
 
 # Load the face detector model you just downloaded
-face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+#face_cascade = cv2.CascadeClassifier(face_cascade_path)
 
 
 # --- 2. PREPROCESSING FUNCTION ---
-def extract_frames_from_video(video_path, sequence_length=20):
+def extract_frames_from_video(video_path, sequence_length, img_size, face_cascade_path='haarcascade_frontalface_default.xml'):
     """
     Processes a single video file.
     1. Opens video
@@ -29,6 +29,7 @@ def extract_frames_from_video(video_path, sequence_length=20):
     4. Resizes, normalizes, and stacks frames into a tensor
     5. Selects `sequence_length` evenly spaced frames
     """
+    face_cascade = cv2.CascadeClassifier(face_cascade_path)
     cap = cv2.VideoCapture(video_path)
     if not cap.isOpened():
         print(f"Error: Could not open video {video_path}")
