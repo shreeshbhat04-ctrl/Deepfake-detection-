@@ -1,9 +1,16 @@
-torch
-torchvision
-opencv-python-headless
-dlib
-numpy
-pandas
-matplotlib
-scikit-learn
-streamlit
+# Pinning all versions for a stable build
+
+# --- Core ML Libraries (Stable for Py 3.11) ---
+torch==2.3.1
+torchvision==0.18.1
+dlib==19.24.4
+
+# --- OpenCV & Data Handling ---
+opencv-python-headless==4.10.0.84
+numpy==1.26.4
+pandas==2.2.2
+matplotlib==3.9.1
+scikit-learn==1.5.1
+
+# --- App Framework ---
+streamlit==1.36.0
