@@ -89,3 +89,6 @@ haarcascade_frontalface_default.xml
 # 5. Log files
 *.log
 logs/
+wheelhouse/
+*.whl
+
