@@ -1,0 +1,17 @@
+# --- Backend API ---
+fastapi==0.111.0
+uvicorn==0.30.1
+python-multipart==0.0.9
+
+# --- Core ML Libraries (Stable for Py 3.11) ---
+torch==2.3.1 --index-url https://download.pytorch.org/whl/cpu
+torchvision==0.18.1 --index-url https://download.pytorch.org/whl/cpu
+
+# --- Face Detection & Processing ---
+mtcnn==0.1.1
+tensorflow-cpu==2.16.1
+opencv-python-headless==4.10.0.84
+numpy==1.26.4
+pandas==2.2.2
+scikit-learn==1.5.1
+matplotlib==3.8.2

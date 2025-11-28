@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Dark cybersecurity theme */
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 15%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 13%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Electric cyan for authentic/real */
+    --primary: 189 97% 55%;
+    --primary-foreground: 222 47% 11%;
+
+    /* Crimson red for fake/danger */
+    --secondary: 0 84% 60%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 222 30% 20%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 189 97% 55%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 222 30% 25%;
+    --input: 222 30% 20%;
+    --ring: 189 97% 55%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens for deepfake detector */
+    --real-glow: 189 97% 55%;
+    --fake-glow: 0 84% 60%;
+    --scanner-grid: 189 50% 30%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(189 97% 55% / 0.2), hsl(217 91% 60% / 0.2));
+    --gradient-danger: linear-gradient(135deg, hsl(0 84% 60% / 0.2), hsl(340 82% 52% / 0.2));
+    --gradient-hero: linear-gradient(180deg, hsl(222 47% 11%), hsl(222 47% 8%));
+    
+    /* Shadows */
+    --shadow-glow-real: 0 0 40px hsl(189 97% 55% / 0.3);
+    --shadow-glow-fake: 0 0 40px hsl(0 84% 60% / 0.3);
+    --shadow-card: 0 8px 32px hsl(0 0% 0% / 0.4);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer utilities {
+  .glow-real {
+    box-shadow: var(--shadow-glow-real);
+  }
+  
+  .glow-fake {
+    box-shadow: var(--shadow-glow-fake);
+  }
+
+  .scanner-line {
+    background: linear-gradient(90deg, 
+      transparent, 
+      hsl(var(--real-glow)) 50%, 
+      transparent
+    );
+    animation: scan 2s ease-in-out infinite;
+  }
+
+  @keyframes scan {
+    0%, 100% { transform: translateY(-100%); opacity: 0; }
+    50% { opacity: 1; }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes slide-up {
+    from { 
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.5s ease-out forwards;
+  }
+}

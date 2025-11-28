@@ -1,0 +1,38 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# C extensions
+*.so
+
+# Virtual Environments
+venv/
+.venv/
+venv311/
+env/
+
+# Downloaded Wheels (Local only)
+wheelhouse/
+*.whl
+
+# OS / Editor specific
+.DS_Store
+.idea/
+.vscode/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Project-Specific (Huge files)
+data/
+saved_models/
+
+# Temporary files
+temp_video.mp4
+test_video.mp4
+
+# Logs
+*.log
+logs/

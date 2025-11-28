@@ -1,0 +1,2 @@
+saved_models/deepfake_detector_best.pth filter=lfs diff=lfs merge=lfs -text
+*.whl filter=lfs diff=lfs merge=lfs -text
