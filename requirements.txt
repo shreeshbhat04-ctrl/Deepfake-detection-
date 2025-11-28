@@ -8,10 +8,10 @@ torch --index-url https://download.pytorch.org/whl/cpu
 torchvision --index-url https://download.pytorch.org/whl/cpu
 
 # --- Face Detection & Processing ---
-mtcnn==0.1.1
-tensorflow-cpu==2.16.1
+mtcnn
+tensorflow-cpu
 opencv-python-headless==4.10.0.84
-numpy==1.26.4
-pandas==2.2.2
-scikit-learn==1.5.1
-matplotlib==3.8.2
+numpy
+pandas
+scikit-learn
+matplotlib
