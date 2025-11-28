@@ -1,30 +1,35 @@
-# 1. Use Python 3.11-slim to keep the image size small and stable
-FROM python:3.11-slim
+# 1. Use 'bookworm' (Debian 12) - it is newer and fixes the "apt-get update" error
+FROM python:3.11-slim-bookworm
 
-# 2. Set the working directory inside the container
+# 2. Set the working directory
 WORKDIR /app
 
-# 3. Install system dependencies required for OpenCV
-# These are linux libraries that opencv-python-headless needs to run
-RUN apt-get update && apt-get install -y \
-    libgl1-mesa-glx \
+# 3. Install system dependencies
+# We added 'build-essential' and 'cmake' to ensure dlib/mtcnn can build
+# We switched 'libgl1-mesa-glx' to 'libgl1' because the old one is deprecated
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libgl1 \
     libglib2.0-0 \
+    build-essential \
+    cmake \
     && rm -rf /var/lib/apt/lists/*
 
-# 4. Copy requirements first to leverage Docker cache
+# 4. Upgrade pip
+RUN pip install --upgrade pip
+
+# 5. Copy requirements
 COPY requirements.txt .
 
-# 5. Install Python dependencies
-# We use --no-cache-dir to keep the image small
+# 6. Install Python dependencies
+# --no-cache-dir keeps the image small
 RUN pip install --no-cache-dir -r requirements.txt
 
-# 6. Copy the rest of the application code
+# 7. Copy the application code
 COPY . .
 
-# 7. Expose port 8080 (Standard for Cloud Run)
+# 8. Expose the port
 ENV PORT=8080
 EXPOSE 8080
 
-# 8. Command to run the API using Uvicorn
-# Host 0.0.0.0 is required for container networking
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8080"]
+# 9. Run the app
+CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "8080"]
